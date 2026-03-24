@@ -1,0 +1,10 @@
+checkpoints/
+data/
+!/src/data/
+figures/
+    html/
+    csv/
+    plots/
+__pycache__/
+.vscode/
+main.py
