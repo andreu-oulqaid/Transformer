@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 
-def plot_loss(train_losses, save_path="loss_curve.png"):
+def plot_loss(train_losses, save_path="figures/loss_curve.png"):
     plt.figure(figsize=(10, 5))
     plt.plot(train_losses, label="Training Loss", color="#2ecc71", lw=2)
     plt.grid(True, alpha=0.3)

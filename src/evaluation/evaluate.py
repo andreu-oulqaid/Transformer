@@ -13,7 +13,7 @@ def evaluate(model, dataset, tokenizer_src, tokenizer_tgt, device, num_samples=1
         src = dataset['test'][i]['en']
         tgt = dataset['test'][i]['de']
 
-        pred = translator.translate(src)
+        pred, _, _, _ = translator.translate(src)
 
         predictions.append(pred)
         references.append(tgt)

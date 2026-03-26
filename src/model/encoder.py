@@ -18,7 +18,7 @@ class EncoderLayer(nn.Module):
 
     def forward(self, x, mask=None):
         # -------------------------
-        # 1. Multi-Head Attention
+        # Multi-Head Attention
         # -------------------------
         attn_output, weights = self.attention(x, x, x, mask)
 
@@ -26,7 +26,7 @@ class EncoderLayer(nn.Module):
         x = self.norm1(x + self.dropout(attn_output))
 
         # -------------------------
-        # 2. Feed Forward
+        # Feed Forward
         # -------------------------
         ffn_output = self.ffn(x)
 
