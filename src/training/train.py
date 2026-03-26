@@ -62,8 +62,8 @@ def main():
         d_model=D_MODEL, num_heads=8, num_layers=3, d_ff=512, dropout=0.1
     ).to(DEVICE)
 
-    criterion = nn.CrossEntropyLoss(ignore_index=pad_id, label_smoothing=0.1)
-    optimizer = torch.optim.Adam(model.parameters(), lr=1.0, betas=(0.9, 0.98), eps=1e-9)
+    criterion = nn.CrossEntropyLoss(ignore_index=pad_id, label_smoothing=0.1) # Ignore padding and correct word 90%, 10% other words
+    optimizer = torch.optim.Adam(model.parameters(), lr=1.0, betas=(0.9, 0.98), eps=1e-9) # Params from Attention is All You Need paper
     scheduler = LambdaLR(optimizer, lr_lambda)
 
     os.makedirs("checkpoints", exist_ok=True)
@@ -90,7 +90,7 @@ def main():
                 loss.backward()
                 nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
                 optimizer.step()
-                scheduler.step()
+                scheduler.step() # Every batch
                 total_train_loss += loss.item()
 
             # Validation
